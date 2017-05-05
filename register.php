@@ -1,29 +1,68 @@
 <html>
 <body>
 
-  <h1> Create a New Account </h1>
+<div class="login_text">
+    <h1> Create a New Account </h1> </div>
   <form method = 'post' action ='index.php'>
  
 
  <link rel="stylesheet" type = "text/css" href="./main.css">
-  
-  <label> First Name: </label> <input type='text'name='user_firstname' value=""/></br></br>
-  <label> Last Name: </label> <input type='text' name='user_lastname' value=""/></br></br>
-  <label> Mobile number: </label><input type="number" name="user_pnumber" /></br>
-  <label> Email Id: </label> <input type='text'name='user_emailid' value="" placeholder="This is your username" /><br><br>
-  <label> Birthday: </label>  <input type="date" name="bday"/></br>
-  <label> Password: </label> <input type="password" name="user_password" /></br></br>
-  <label> Gender:</label>
-  
-  <input type="radio" name="gender" value="male"> Male
-  <input type="radio" name="gender" value="female"> Female<br>
+
+
+      <div class ="login">
+          <table>
+              <tr>
+                  <td><label> First Name: </label></td>
+                  <td><input type='text'name='user_firstname' value=""/></br></br></td>
+              </tr>
+
+              <tr>
+                  <td><label> Last Name: </label> </td>
+                  <td><input type='text' name='user_lastname' value=""/></br></br></td>
+              </tr>
+
+              <tr>
+                  <td><label> Mobile number: </label> </td>
+                  <td><input type="number" name="user_pnumber" /></br></br></td>
+              </tr>
+
+
+              <tr>
+                  <td><label> Email Id: </label> </td>
+                  <td><input type='text'name='user_emailid' value="" placeholder="This is your username" /><br><br></td>
+              </tr>
+
+              <tr>
+                  <td><label> Birthday: </label></td>
+                  <td><input type="date" name="bday"/></br></br></td>
+              </tr>
+
+              <tr>
+              <td><label> Password: </label> </td>
+              <td><input type="password" name="user_password" /></br></br></td>
+              </tr>
+
+
+              <tr>
+                  <td> <Label> Gender </Label></td>
+                  <td><input type="radio" name="gender" value="male"> Male
+                      <input type="radio" name="gender" value="female"> Female<br></br></td>
+              </tr>
+
+
+          </table>
+
+
+
+
   <input type ="hidden" name="action" value ="registrar">
   <input type='submit' value='register'>
-  </form>
 
   <form action="login.php" method='post'>
   <input type='submit' value='try to login'>
   </form>
+  </form>
+</div>
 
 </body>
 </html>
