@@ -34,10 +34,9 @@
 		 }
 		  else if ($action == 'registrar')
              {
-             	// header("location: logout.php");
               // echo " we want to create a new account";
               $name = filter_input(INPUT_POST, 'user_emailid');
-	     // echo " You are about to enter";
+
 	      if(isset($name))
 	        {
 		 $firstname= filter_input(INPUT_POST, 'user_firstname');
@@ -59,9 +58,9 @@
 	     } 						
 	      else if ($action == 'Add')
 	     {
-	       if (($_POST['todo_item'] and $_POST['todo_item']))
+	       if (($_POST['todo_item'] AND $_POST['todo_item']))
 	         {
-		   adddescription($_COOKIE['my_id'], $_POST['todo_item'], $_POST['description'], $_POST['date_of_entry'], $_POST['time_of_entry']);
+		   adddescription( $_COOKIE['my_id'], $_POST['todo_item'], $_POST['description'], $_POST['date_of_entry'], $_POST['time_of_entry']);
 		 }
 		 $result = getTodoItems($_COOKIE['my_id']);
 		 include('list.php');
@@ -74,5 +73,8 @@
 		   }
 		 $result = getTodoItems($_COOKIE['my_id']);
 		 include ('list.php');    
-           }
+           } else if($action == 'edit'){
+				$result = getTodoItem($_POST['id']);
+  				include('editdata.php');
+		  }
 ?>
