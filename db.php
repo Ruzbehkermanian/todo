@@ -25,7 +25,7 @@
     function getTodoItems($user_id)					// Fetch Data for the user
     {
     global $db;
-    $query = 'select * from todos where user_id = :userid';
+    $query = 'select * from todos where user_id = :userid order by date_of_entry,time_of_entry asc';
     $statement = $db->prepare($query);
     $statement->bindValue(':userid',$user_id);
     $statement->execute();
@@ -127,5 +127,17 @@
         $statement->closeCursor();
 
     }
+
+function getTodoItem($id)					// Fetch Data for the user for edit use
+{
+    global $db;
+    $query = 'select * from todos where id = :id';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':id', $id);
+    $statement->execute();
+    $result = $statement->fetchAll();
+    $statement->closeCursor();
+    return $result;
+}
 
 ?>
