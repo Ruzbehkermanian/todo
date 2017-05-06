@@ -6,8 +6,13 @@
  * Time: 3:52 PM
  **/-->
 
-
+  <html>
+  <head>
+      <body>
   <form action = "login.php">
-  <input type="submit" value ="Logout"/>
+      <input type="submit" value ="Logout"/>
   </form>
+  </body>
+  </head>
+  </html>
 
