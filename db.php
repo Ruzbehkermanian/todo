@@ -80,7 +80,7 @@
 	     
       }
 
-    function createUser( $username, $password, $firstname, $lastname, $mobilenumber, $dateofbirth, $gender // Create New User if already not present
+    function createUser( $username, $password, $firstname, $lastname, $mobilenumber, $dateofbirth, $gender) // Create New User if already not present
       {
 	global $db;
 	$query = 'select * from users where username = :name';
@@ -113,19 +113,19 @@
 
       }
 
-    function add_description($userid, $description, $date_of_entry, $time_of_entry)
+    function adddescription($userid, $todo_item ,$description, $date_of_entry, $time_of_entry)
     {
         global $db;
-        $query ='insert into todos (todo_item, description, date_of_entry, time_of_entry) values (:todo_item, :description, :date_of_entry, :time_of_entry';
+        $query ='insert into todos (user_id,todo_item, description, date_of_entry, time_of_entry) values (:user_id,:todo_item, :description, :date_of_entry, :time_of_entry)';
         $statement = $db-> prepare($query);
-        $statement->bindValue(':todo_item', $userid);
+        $statement->bindValue(':user_id', $userid);
+        $statement->bindValue(':todo_item', $todo_item);
         $statement->bindValue(':description', $description);
         $statement->bindValue(':date_of_entry', $date_of_entry);
         $statement->bindValue(':time_of_entry', $time_of_entry);
         $statement-> execute();
-        $_result = $statement->fetchAll();
         $statement->closeCursor();
 
     }
-?>
 
+?>
