@@ -73,8 +73,10 @@
 		   }
 		 $result = getTodoItems($_COOKIE['my_id']);
 		 include ('list.php');    
-           } else if($action == 'edit'){
-				$result = getTodoItem($_POST['id']);
+           } else if($action == 'Edit'){
+  	$edit = $_POST['edit_id'];
+  	echo "$edit";
+				$result = getTodoItem($_POST['edit_id']);
   				include('editdata.php');
 		  }
 ?>
