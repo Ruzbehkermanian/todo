@@ -14,7 +14,7 @@
     function deletedTodoItems($user_id,$todo_id)			// Delete Data from the user
     {
     global $db;
-    $query = 'delete from todos where user_id = :user_id AND todo_item = :todo_id';
+    $query = 'delete from todos where user_id = :user_id AND id= :todo_id';
     $statement = $db->prepare($query);
     $statement->bindValue(':user_id',$user_id);
     $statement->bindValue(':todo_id',$todo_id);
@@ -35,7 +35,7 @@
     } 
   
 
-     function isUserValid($username, $password)					// Check if Valid User is selected from the Database
+    function isUserValid($username, $password)					// Check if Valid User is selected from the Database
      {
      global $db;
      $query = 'select * from users where username = :name and passwordHash = :pass';
@@ -80,7 +80,7 @@
 	     
       }
 
-      function createUser( $username, $password, $firstname, $lastname, $mobilenumber, $dateofbirth, $gender) 	// Create New User if already not present
+    function createUser( $username, $password, $firstname, $lastname, $mobilenumber, $dateofbirth, $gender // Create New User if already not present
       {
 	global $db;
 	$query = 'select * from users where username = :name';
@@ -112,5 +112,20 @@
              }
 
       }
+
+    function add_description($userid, $description, $date_of_entry, $time_of_entry)
+    {
+        global $db;
+        $query ='insert into todos (todo_item, description, date_of_entry, time_of_entry) values (:todo_item, :description, :date_of_entry, :time_of_entry';
+        $statement = $db-> prepare($query);
+        $statement->bindValue(':todo_item', $userid);
+        $statement->bindValue(':description', $description);
+        $statement->bindValue(':date_of_entry', $date_of_entry);
+        $statement->bindValue(':time_of_entry', $time_of_entry);
+        $statement-> execute();
+        $_result = $statement->fetchAll();
+        $statement->closeCursor();
+
+    }
 ?>
 
