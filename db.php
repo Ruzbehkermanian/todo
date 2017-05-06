@@ -11,13 +11,13 @@
     $statement->closeCursor();
     }
 
-    function deletedTodoItems($user_id,$todo_text)			// Delete Data from the user
+    function deletedTodoItems($user_id,$todo_id)			// Delete Data from the user
     {
     global $db;
-    $query = 'delete from todos where user_id = :user_id )';
+    $query = 'delete from todos where user_id = :user_id AND todo_item = :todo_id';
     $statement = $db->prepare($query);
-    $statement->bindValue(':userid',$user_id);
-    $statement->bindValue(':todo_text',$todo_text);
+    $statement->bindValue(':user_id',$user_id);
+    $statement->bindValue(':todo_id',$todo_id);
     $statement->execute();
     $statement->closeCursor();
     }
@@ -56,8 +56,10 @@
      $statement->closeCursor();
      $num = $statement->rowCount();
 
+     $u_name = $result[0]['firstname'].' '.$result[0]['lastname'];
+
      if($count ==1){
-       setcookie('login',$username);
+       setcookie('login',$u_name);
        setcookie('my_id',$result[0]['id']);
        setcookie('islogged',true);
        return true;
@@ -76,14 +78,6 @@
 	return 'Email not found';
 	     }
 	     
-      }
-
-
-      function checkuser($username)
-      {
-          global $db;
-
-
       }
 
       function createUser( $username, $password, $firstname, $lastname, $mobilenumber, $dateofbirth, $gender) 	// Create New User if already not present
