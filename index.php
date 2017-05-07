@@ -11,7 +11,7 @@
   if($action == "show_login_page")
   {
     include('login.php');
-  }  else if($action == 'test_user')
+  }  else if($action == 'test_user')                                       // action to check user
   	{
 	  $username = $_POST['reg_uname'];
 	  $password = $_POST['reg_password'];
@@ -19,24 +19,30 @@
 	  if($suc === true)
 	  {
 	    $result = getTodoItems($_COOKIE['my_id']);
-	    include('list.php');
+          include('list.php');
+	  }
+	  elseif($suc === 'Email Exists')
+      {
+         include("login_error.php");
 
+          // echo 'Email correct. Incorrect Password';
+	  }
+	  elseif($suc === 'Email not found') {
 
-	  } elseif($suc === 'Email Exists') {
-	  	echo 'Email correct. Incorrect Password';
-	  } elseif($suc === 'Email not found') {
-          echo 'User not found';
+       include('login_user_missing.php');
+
       }
 	  else {
 	  	// echo "wrong login and password";
-	  	   header("Location: badInfo.php");
-	         }
-		 }
-		  else if ($action == 'registrar')
+          include("index.php");
+          include('login_user_error.php');
+          print 'Username and Password combination is not present';
+	  	   // header("Location: badInfo.php");
+           }
+    }
+		  else if ($action == 'registrar')                              // action of registering
              {
-              // echo " we want to create a new account";
               $name = filter_input(INPUT_POST, 'user_emailid');
-
 	      if(isset($name))
 	        {
 		 $firstname= filter_input(INPUT_POST, 'user_firstname');
@@ -56,7 +62,7 @@
 		         }
 		}
 	     } 						
-	      else if ($action == 'Add')
+	      else if ($action == 'Add')                                // action of adding
 	     {
 	       if (($_POST['todo_item'] AND $_POST['todo_item']))
 	         {
@@ -64,7 +70,7 @@
 		 }
 		 $result = getTodoItems($_COOKIE['my_id']);
 		 include('list.php');
-	     }else if ($action == 'delete')
+	     }else if ($action == 'delete')                                 // action of deleting
 	         {
 		  if(isset($_POST['item_id']))
 		   {
@@ -73,9 +79,8 @@
 		   }
 		 $result = getTodoItems($_COOKIE['my_id']);
 		 include ('list.php');    
-           } else if($action == 'Edit'){
-  	$edit = $_POST['edit_id'];
-  	echo "$edit";
+           } else if($action == 'Edit'){                                // action of editing
+  	            $edit = $_POST['edit_id'];
 				$result = getTodoItem($_POST['edit_id']);
   				include('editdata.php');
 		  }
