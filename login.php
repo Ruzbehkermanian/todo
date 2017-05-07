@@ -1,27 +1,24 @@
+
+
 <html>
+<head>
+
+    <link rel="stylesheet" href="main.css">
+</head>
 <body>
- 
-
-
-<div class="login_text">
- <h1> Login Page</h1> </div>
- <link rel="stylesheet" type = "text/css" href="./main.css">
-
-
- <div class ="login">
- <form method = "post" action ="index.php">
- <strong class="text-white">username:</strong><input type = "test" name="reg_uname" value=""/><br><br>
- <strong>password:</strong><input type = "password" name="reg_password" value=""/><br><br>
-
-
- <input type="hidden" name="action" value="test_user">
-     <input type="submit" value ="Login">
- </form>
-
- <form action = "register.php"> <input type="submit" value ="Register">
- </form>
- </div>
-
+<div class="login-page">
+    <div class="form">
+        <form class="login-form" action="index.php" method="post">
+            <input type="text" name="reg_uname" placeholder="username"/>
+            <input type="password" name="reg_password" placeholder="password"/>
+            <input type="hidden" name="action" value="test_user">
+            <button>login</button>
+            <p class="message">Not registered? <a href="register.php">Create an account</a></p>
+        </form>
+    </div>
+</div>
 </body>
 </html>
+
+
 
