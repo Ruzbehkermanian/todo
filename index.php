@@ -82,12 +82,9 @@
               $result = getTodoItem($_POST['edit_id']);
               include('editdata.php');
           }
-
           else if($action == 'Edit') {
 
-              $id = $_POST['ID'];
-
-             updateTodoItem($_COOKIE['user_id'], $_POST['todo_item'], $_POST['description'], $_POST['date_of_entry'], $_POST['time_of_entry'], $id);
+			  updateTodoItem($_COOKIE['my_id'], $_POST['todo_item'], $_POST['description'], $_POST['date_of_entry'], $_POST['time_of_entry'], $_POST['ID']);
               $result = getTodoItems($_COOKIE['my_id']);
                     include('list.php');
 				}
