@@ -3,19 +3,20 @@
 <html>
 <head>
 
+    <?php   echo " <h3> Welcome, ". $_COOKIE['login'] .' <br/>';?>
     <form align="right" action="login.php">
-        <input type="submit" value="Logout" class="button"> </form>
+        <input type="submit" value="Logout" class="button">
+
+    </form>
+
     <?php
-   // echo "<h2> To Do list system  </h2><br/><br/>";
 
-
-    echo " <h3> Welcome, ". $_COOKIE['login'] .' <br/>';
     echo " <h3> Below you may find your to-do items </h3><br/><br/>";
         ?>
 
     <form action='add_description.php'>
-        <label> Add a new item</label>
-        <input type="submit" value="Add" align=""/>
+        <label> Add a new item:   </label>
+        <input type="submit" value="Add" align="left"/> <td><br></td> <td><br></td>
     </form>
 
    <link rel="stylesheet" href="main.css">
@@ -27,16 +28,27 @@
 
 <table style="width:80%">
 
+        <tr>
+            <th> INCOMPLETE TODO ITEMS</th>
+            <td><br></td>
+            <td><br></td>
+            <td><br></td>
+            <td><br></td>
+        </tr>
+
       <tr>
-          <th>ToDo Item</th>
-          <th>Description</th>
-          <th>Date of Entry</th>
-          <th>Time of Entry</th>
+
+          <th align="left">ToDo Item</th>
+          <th align="left">Description</th>
+          <th align="left">Date of Entry</th>
+          <th align="left">Time of Entry</th>
+
+
       </tr>
 
       <?php foreach($result as $res):?>
           <tr>
-          <td><a href='detail.php'><?php echo $res['todo_item']. '<br/>';?></a></td>
+          <td><?php echo $res['todo_item']. '<br/>';?></a></td>
               <td><?php echo $res['description']. '</br>'; ?>'</td>
               <td><?php echo $res['date_of_entry']. '</br>'; ?>'</td>
               <td><?php echo $res['time_of_entry']. '</br>'; ?>'</td>
