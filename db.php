@@ -33,7 +33,6 @@
     $statement->closeCursor();
     return $result;
     } 
-  
 
     function isUserValid($username, $password)		// Check if Valid User is selected from the Database
      {
@@ -80,7 +79,7 @@
 	     
       }
 
-    function createUser( $username, $password, $firstname, $lastname, $mobilenumber, $dateofbirth, $gender) // Create New User if already not present
+    function createUser($username, $password, $firstname, $lastname, $mobilenumber, $dateofbirth, $gender) // Create New User if already not present
       {
 	global $db;
 	$query = 'select * from users where username = :name';
@@ -140,10 +139,10 @@
     return $result;
 }
 
-    function updateTodoItem($user_id, $todo_item, $description, $date_of_entry, $time_of_entry, $id)
+    function updateTodoItem($user_id, $todo_item, $description, $date_of_entry, $time_of_entry, $id)      // Edit the data and update accordingly
     {
         global $db;
-        $query = 'update todos set user_id = :user_id, todo_item = :todo_item, description = :description, date_of_entry = :date_of_entry, time_of_entry = :time_of_entry,  where id = :id';
+        $query = 'UPDATE todos SET user_id = :user_id, todo_item = :todo_item, description = :description, date_of_entry = :date_of_entry, time_of_entry = :time_of_entry WHERE id = :id';
         $statement = $db->prepare($query);
         $statement->bindValue(':id', $id);
         $statement->bindValue(':user_id', $user_id);
@@ -153,6 +152,8 @@
         $statement->bindValue(':time_of_entry', $time_of_entry);
         $statement->execute();
         $statement->closeCursor();
+        $result = $statement->fetchAll();
+       
     }
 
 
