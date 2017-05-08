@@ -29,14 +29,6 @@
 
 <table style="width:80%">
 
-
-        <tr>
-            <td><br></td>
-            <td><br></td>
-            <td><br></td>
-            <td><br></td>
-        </tr>
-
       <tr>
 
           <th align="left">ToDo Item</th>
@@ -50,9 +42,9 @@
       <?php foreach($result as $res):?>
           <tr>
           <td><?php echo $res['todo_item']. '<br/>';?></a></td>
-              <td><?php echo $res['description']. '</br>'; ?>'</td>
-              <td><?php echo $res['date_of_entry']. '</br>'; ?>'</td>
-              <td><?php echo $res['time_of_entry']. '</br>'; ?>'</td>
+              <td><?php echo $res['description']. '</br>'; ?></td>
+              <td><?php echo $res['date_of_entry']. '</br>'; ?></td>
+              <td><?php echo $res['time_of_entry']. '</br>'; ?></td>
               <td> <form action='index.php' method='post'>
                   <input type='hidden' name='edit_id' value='<?php echo $res['id']; ?>'>
                   <input type='hidden' name='action' value='Edit'; >
@@ -83,9 +75,17 @@
 
 </table>
 
+
+
+<tr>
+    <td><br></td>
+    <td><br></td>
+
+</tr>
+
 <h3 align="center" style="color:green;"> COMPLETE TODO ITEMS</h3>
 
-<table style="width:80%">
+<table style="width:60%">
 
     <tr>
 
@@ -100,12 +100,17 @@
     <?php foreach($result as $res):?>
         <tr>
             <td><?php echo $res['todo_item']. '<br/>';?></a></td>
-            <td><?php echo $res['description']. '</br>'; ?>'</td>
-            <td><?php echo $res['date_of_entry']. '</br>'; ?>'</td>
-            <td><?php echo $res['time_of_entry']. '</br>'; ?>'</td>
+            <td><?php echo $res['description']. '</br>'; ?></td>
+            <td><?php echo $res['date_of_entry']. '</br>'; ?></td>
+            <td><?php echo $res['time_of_entry']. '</br>'; ?></td>
 
-
-
+           <!-- <td>
+                <form action='index.php' method='post'>
+                    <input type='hidden' name='item_id' value='<?php /*echo $res['id'] */?>'>
+                    <input type='hidden' name='action' value='incomplete'; >
+                    <input type='submit' value="incomplete">
+                </form>
+            </td>-->
         </tr>
 
     <?php endforeach; ?>
