@@ -179,6 +179,6 @@
         $statement->execute();
          $result = $statement->fetchAll();
          return $result;
-}
+}             // display the complete data in other table
 
 ?>
