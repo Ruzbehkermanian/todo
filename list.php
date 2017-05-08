@@ -25,11 +25,12 @@
 
 <body>
 
+<h3 align="center"> INCOMPLETE TODO ITEMS</h3>
 
 <table style="width:80%">
 
+
         <tr>
-            <th> INCOMPLETE TODO ITEMS</th>
             <td><br></td>
             <td><br></td>
             <td><br></td>
@@ -66,10 +67,48 @@
                   </form>
               </td>
 
+              <td>
+                  <form action='index.php' method='post'>
+                      <input type='hidden' name='item_id' value='<?php echo $res['id'] ?>'>
+                      <input type='hidden' name='action' value='complete'; >
+                      <input type='submit' value="complete">
+                  </form>
+              </td>
+
+
           </tr>
 
 
 <?php endforeach; ?>
+
+</table>
+
+<h3 align="center"> COMPLETE TODO ITEMS</h3>
+
+<table style="width:80%">
+
+    <tr>
+
+        <th align="left">ToDo Item</th>
+        <th align="left">Description</th>
+        <th align="left">Date of Entry</th>
+        <th align="left">Time of Entry</th>
+
+
+    </tr>
+
+    <?php foreach($result as $res):?>
+        <tr>
+            <td><?php echo $res['todo_item']. '<br/>';?></a></td>
+            <td><?php echo $res['description']. '</br>'; ?>'</td>
+            <td><?php echo $res['date_of_entry']. '</br>'; ?>'</td>
+            <td><?php echo $res['time_of_entry']. '</br>'; ?>'</td>
+
+
+
+        </tr>
+
+    <?php endforeach; ?>
 
 </table>
 </body>
