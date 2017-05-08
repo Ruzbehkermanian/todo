@@ -19,6 +19,7 @@
 	  if($suc === true)
 	  {
 	    $result = getTodoItems($_COOKIE['my_id']);
+          $resultstatus = getTodoItems2($_COOKIE['my_id']);
           include('list.php');
 	  }
 	  elseif($suc === 'Email Exists')
@@ -67,6 +68,7 @@
 		   adddescription( $_COOKIE['my_id'], $_POST['todo_item'], $_POST['description'], $_POST['date_of_entry'], $_POST['time_of_entry']);
 		 }
 		 $result = getTodoItems($_COOKIE['my_id']);
+             $resultstatus = getTodoItems2($_COOKIE['my_id']);
 		 include('list.php');
 	     }else if ($action == 'delete')                                 // action of deleting
 	         {
@@ -76,17 +78,29 @@
 		    deletedTodoItems($_COOKIE['my_id'], $selected);
 		   }
 		 $result = getTodoItems($_COOKIE['my_id']);
+                 $resultstatus = getTodoItems2($_COOKIE['my_id']);
 		 include ('list.php');    
            } else if($action == 'edit') {                                // action of editing
               $edit = $_POST['edit_id'];
               $result = getTodoItem($_POST['edit_id']);
               include('editdata.php');
           }
-          else if($action == 'Edit') {
+          else if($action == 'Edit') {									// action of editing and displaying
 
 			  updateTodoItem($_COOKIE['my_id'], $_POST['todo_item'], $_POST['description'], $_POST['date_of_entry'], $_POST['time_of_entry'], $_POST['ID']);
               $result = getTodoItems($_COOKIE['my_id']);
+              $resultstatus = getTodoItems2($_COOKIE['my_id']);
                     include('list.php');
+				}
+
+				else if ($action == 'complete'){				// complete function added
+
+  					$status = 1;
+					updateStatus($status, $_POST['item_id']);
+					$resultstatus = getTodoItems2($_COOKIE['my_id']);
+					$result = getTodoItems($_COOKIE['my_id']);
+					include('list.php');
+
 				}
 
 
