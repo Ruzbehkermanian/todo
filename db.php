@@ -1,6 +1,6 @@
 <?php
   
-    function addTodoItem($user_id,$todo_text)  				// Add Data to the User
+    function addTodoItem($user_id,$todo_text)  		// Add Data to the User
     {
     global $db;
     $query = 'insert into todos(user_id,todo_item) values (:userid,:todo_text)';
@@ -11,7 +11,7 @@
     $statement->closeCursor();
     }
 
-    function deletedTodoItems($user_id,$todo_id)			// Delete Data from the user
+    function deletedTodoItems($user_id,$todo_id)	// Delete Data from the user
     {
     global $db;
     $query = 'delete from todos where user_id = :user_id AND id= :todo_id';
@@ -22,7 +22,7 @@
     $statement->closeCursor();
     }
 
-    function getTodoItems($user_id)					// Fetch Data for the user
+    function getTodoItems($user_id)			// Fetch Data for the user
     {
     global $db;
     $query = 'select * from todos where user_id = :userid order by date_of_entry,time_of_entry asc';
@@ -35,7 +35,7 @@
     } 
   
 
-    function isUserValid($username, $password)					// Check if Valid User is selected from the Database
+    function isUserValid($username, $password)		// Check if Valid User is selected from the Database
      {
      global $db;
      $query = 'select * from users where username = :name and passwordHash = :pass';
@@ -128,7 +128,7 @@
 
     }
 
-function getTodoItem($id)					// Fetch Data for the user for edit use
+    function getTodoItem($id)		// Fetch Data for the user for edit use
 {
     global $db;
     $query = 'select * from todos where id = :id';
@@ -139,5 +139,21 @@ function getTodoItem($id)					// Fetch Data for the user for edit use
     $statement->closeCursor();
     return $result;
 }
+
+    function updateTodoItem($user_id, $todo_item, $description, $date_of_entry, $time_of_entry, $id)
+    {
+        global $db;
+        $query = 'update todos set user_id = :user_id, todo_item = :todo_item, description = :description, date_of_entry = :date_of_entry, time_of_entry = :time_of_entry,  where id = :id';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':id', $id);
+        $statement->bindValue(':user_id', $user_id);
+        $statement->bindValue(':todo_item', $todo_item);
+        $statement->bindValue(':description', $description);
+        $statement->bindValue(':date_of_entry', $date_of_entry);
+        $statement->bindValue(':time_of_entry', $time_of_entry);
+        $statement->execute();
+        $statement->closeCursor();
+    }
+
 
 ?>
