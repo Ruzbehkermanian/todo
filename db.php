@@ -25,7 +25,7 @@
     function getTodoItems($user_id)			// Fetch Data for the user
     {
     global $db;
-    $query = 'select * from todos where user_id = :userid order by date_of_entry,time_of_entry asc';
+    $query = 'select * from todos where user_id = :userid and status = 0 order by date_of_entry,time_of_entry asc';
     $statement = $db->prepare($query);
     $statement->bindValue(':userid',$user_id);
     $statement->execute();
@@ -156,5 +156,29 @@
        
     }
 
+    function updateStatus($status, $id)              // Complete function added
+
+    {
+      global $db;
+      $query = 'update todos set status = :status where id = :id';
+      	$statement = $db->prepare($query);
+      	$statement->bindValue(':status',$status);
+     	$statement->bindValue(':id',$id);
+      	$statement->execute();
+    	$statement->closeCursor();
+
+
+}
+
+    function getTodoItems2($user_id)
+    {
+        global $db;
+        $query = 'select * from todos where user_id = :user_id and status = 1 order by date_of_entry,time_of_entry asc';
+        $statement = $db->prepare($query);
+          $statement->bindValue(':user_id',$user_id);
+        $statement->execute();
+         $result = $statement->fetchAll();
+         return $result;
+}
 
 ?>
