@@ -5,7 +5,7 @@
 
     <?php   echo " <h3> Welcome, ". $_COOKIE['login'] .' <br/>';?>
     <form align="right" action="login.php">
-        <input type="submit" value="Logout" class="button">
+        <input type="submit" value="Logout" style="color:brown;class="button">
 
     </form>
 
@@ -16,7 +16,7 @@
 
     <form action='add_description.php'>
         <label> Add a new item:   </label>
-        <input type="submit" value="Add" align="left"/> <td><br></td> <td><br></td>
+        <input type="submit" value="Add" align="left" style="color:blue;"/> <td><br></td> <td><br></td>
     </form>
 
    <link rel="stylesheet" href="main.css">
@@ -25,7 +25,7 @@
 
 <body>
 
-<h3 align="center"> INCOMPLETE TODO ITEMS</h3>
+<h3 align="center" style="color:red;"> INCOMPLETE TODO ITEMS </h3>
 
 <table style="width:80%">
 
@@ -83,7 +83,7 @@
 
 </table>
 
-<h3 align="center"> COMPLETE TODO ITEMS</h3>
+<h3 align="center" style="color:green;"> COMPLETE TODO ITEMS</h3>
 
 <table style="width:80%">
 
