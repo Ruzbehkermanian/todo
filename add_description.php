@@ -13,7 +13,6 @@
             <input  type='text' name='description' placeholder="Description"/>
             <input type="date" name='date_of_entry' placeholder="Date of Entry"/>
             <input type='time'name='time_of_entry' value="" placeholder="Time of Entry"/>
-
             <input type="hidden" name="action" value="Add">
         <button>Add</button>
         </form>
