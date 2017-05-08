@@ -25,7 +25,6 @@
       {
          include("login_error.php");
 
-          // echo 'Email correct. Incorrect Password';
 	  }
 	  elseif($suc === 'Email not found') {
 
@@ -33,11 +32,11 @@
 
       }
 	  else {
-	  	// echo "wrong login and password";
+
           include("index.php");
           include('login_user_error.php');
           print 'Username and Password combination is not present';
-	  	   // header("Location: badInfo.php");
+
            }
     }
 		  else if ($action == 'registrar')                              // action of registering
@@ -57,8 +56,7 @@
 			header("location: user_exists.php");
 
 		   }else {
-
-		          header("Location: login.php");
+			  		header("Location: login.php");
 		         }
 		}
 	     } 						
@@ -79,9 +77,20 @@
 		   }
 		 $result = getTodoItems($_COOKIE['my_id']);
 		 include ('list.php');    
-           } else if($action == 'Edit'){                                // action of editing
-  	            $edit = $_POST['edit_id'];
-				$result = getTodoItem($_POST['edit_id']);
-  				include('editdata.php');
-		  }
+           } else if($action == 'edit') {                                // action of editing
+              $edit = $_POST['edit_id'];
+              $result = getTodoItem($_POST['edit_id']);
+              include('editdata.php');
+          }
+
+          else if($action == 'Edit') {
+
+              $id = $_POST['ID'];
+
+             updateTodoItem($_COOKIE['user_id'], $_POST['todo_item'], $_POST['description'], $_POST['date_of_entry'], $_POST['time_of_entry'], $id);
+              $result = getTodoItems($_COOKIE['my_id']);
+                    include('list.php');
+				}
+
+
 ?>
